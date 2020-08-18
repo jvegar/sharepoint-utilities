@@ -21,8 +21,8 @@ namespace appAddUsersToGroup
         static void Move_Users()
         {
             //Te Loogueas en el sitio de SharePoint
-            ClientContext contexto = new ClientContext("https://intranet.fonafe.gob.pe/");
-            contexto.Credentials = new NetworkCredential("spfarm", "SP@dm1n$2018");
+            ClientContext contexto = new ClientContext("[siteurl]");
+            contexto.Credentials = new NetworkCredential("[username]", "[password]");
             Web web = contexto.Web;
 
             GroupCollection _SiteGroups = web.SiteGroups;
@@ -39,7 +39,7 @@ namespace appAddUsersToGroup
             //Obtendremos la fecha de hoy
             DateTime dtNow = DateTime.Now;
 
-            //Realizar la consulta query , lo cual obtendr· todos los datos de 2 columnas (Nombre,Creado Por)
+            //Realizar la consulta query , lo cual obtendr√° todos los datos de 2 columnas (Nombre,Creado Por)
             /*CamlQuery query = new CamlQuery { ViewXml = "<View><Query><Where><And><IsNotNull><FieldRef Name='Title' /></IsNotNull><And><And><IsNotNull><FieldRef Name='Created' /></IsNotNull><IsNotNull><FieldRef Name='Name' /></IsNotNull></And><IsNotNull><FieldRef Name='EMail' /></IsNotNull></And></And></Where></Query></View>" }*/
             ;
             CamlQuery query = new CamlQuery { ViewXml = "<View><Query><Where><And><And><IsNotNull><FieldRef Name='Title' /></IsNotNull><IsNotNull><FieldRef Name='Created' /></IsNotNull></And><And><IsNotNull><FieldRef Name='Name' /></IsNotNull><IsNotNull><FieldRef Name='EMail' /></IsNotNull></And></And></Where><OrderBy><FieldRef Name='Title' Ascending='True' /></OrderBy></Query></View>" };
@@ -56,7 +56,7 @@ namespace appAddUsersToGroup
             string con = "";
 
             if (queryCorrelativo != null)
-            //  Hacer comparaciÛn entre fecha actual - 3 meses(90dÌas) y si es igual el "[Created]" entonces->agregar al grupo de usuarios viejos
+            //  Hacer comparaci√≥n entre fecha actual - 3 meses(90d√≠as) y si es igual el "[Created]" entonces->agregar al grupo de usuarios viejos
 
             {
 
@@ -109,8 +109,8 @@ namespace appAddUsersToGroup
         }
         static void Enter_Group(string Login, string nombre)
         {
-            ClientContext context = new ClientContext("https://intranet.fonafe.gob.pe/");
-            context.Credentials = new NetworkCredential("spfarm", "SP@dm1n$2018");            
+            ClientContext context = new ClientContext("[siteurl]");
+            context.Credentials = new NetworkCredential("[username]", "[password]");            
             GroupCollection _GroupCollection = context.Web.SiteGroups;
             Group grupo = _GroupCollection.GetById(6);
             UserCreationInformation UCI = new UserCreationInformation();
