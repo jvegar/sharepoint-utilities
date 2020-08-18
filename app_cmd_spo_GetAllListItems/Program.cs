@@ -18,16 +18,16 @@ namespace Microsoft.SDK.SharePointServices.Samples
             ClientContext clientContext;
             if (O365)
             {                
-                var pwd = "s1st3m42020$";
+                var pwd = "[password]";
                 var passWord = new SecureString();
                 foreach (char c in pwd.ToCharArray()) passWord.AppendChar(c);
-                SharePointOnlineCredentials myCred = new SharePointOnlineCredentials("serviciosti@gym.com.pe", passWord);
+                SharePointOnlineCredentials myCred = new SharePointOnlineCredentials("[username]", passWord);
                 clientContext = new ClientContext(siteUrl);
                 clientContext.Credentials = myCred;
             }
             else
             {
-                NetworkCredential myCred = new NetworkCredential("serviciosti", "s1st3m42020$");
+                NetworkCredential myCred = new NetworkCredential("[username]", "[password]");
                 clientContext = new ClientContext(siteUrl);
                 clientContext.Credentials = myCred;
             }
