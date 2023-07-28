@@ -14,7 +14,7 @@ namespace appAddUsersToGroup
         {
             Console.WriteLine("Hello World!");
             //Move_Users();
-            Enter_Group("i:0#.w|fonafedom\\rstucchi", "ad_fonafegob");
+            Enter_Group("[sam_account]", "[group_name]");
             Console.ReadKey();
         }
 
